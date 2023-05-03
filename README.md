@@ -10,8 +10,10 @@ TIL은 2023년부터 기록합니다. 2022년 이전 기록은 프로젝트 단�
 - 개발과 무관한 개인 공부(영어, 제2외국어 등)는 적지 않습니다.
 
 ## 디렉토리 설명
-1. DONE LIST : 매일 한 일을 기록합니다.
-2. Algorithm : BOJ, Samsung SW, Softeer의 문제를 풀고 기록합니다.
-3. Data Analysis : 자격증을 비롯해 데이터 분석과 관련된 것을 기록합니다.
-4. CS : Computer Science 공부 내용을 기록합니다.
-5. Paper Review : 논문 리뷰 후 이해/해석한 내용을 기록합니다.
+1. __DONE LIST__ : 매일 한 일을 기록합니다.
+2. __Algorithm__ : BOJ, Samsung SW, Softeer의 문제를 풀고 기록합니다.<br>
+  #C #Python #Data Structure
+3. __Data Analysis__ : 자격증을 비롯해 데이터 분석과 관련된 것을 기록합니다.<br>
+  #Python #R #ADP #빅데이터분석기사 #SQL #SQLD
+4. __CS__ : Computer Science 공부 내용을 기록합니다.
+5. __Paper Review__ : 논문 리뷰 후 이해/해석한 내용을 기록합니다.
