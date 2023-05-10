@@ -16,7 +16,9 @@ TIL은 2023년부터 기록합니다. 이전 기록은 프로젝트 단위로 �
 4. __Data Analysis__ : 자격증을 비롯해 데이터 분석, 데이터 베이스와 관련된 것을 기록합니다.<br>
   #Python #R #ADP #빅데이터분석기사 #SQL #SQLD<br>
   [개인 데이터분석은 이곳에서](https://github.com/lou9am/Data_Analysis.git) 
-5. __Algorithm__ : BOJ, Samsung SW, Softeer의 문제를 풀고 기록합니다.<br>
+5. __Paper Review__ : 논문 리뷰 후 이해/해석한 내용을 기록합니다.<br>
+
+#### 알고리즘 공부는 따로 관리합니다.
+__Algorithm__ : BOJ, Samsung SW, Softeer의 문제를 풀고 기록합니다.<br>
   #C #Python #Data Structure<br>
   [알고리즘 공부 리포지토리](https://github.com/lou9am/AlgorithmStudy)
-6. __Paper Review__ : 논문 리뷰 후 이해/해석한 내용을 기록합니다.<br>
