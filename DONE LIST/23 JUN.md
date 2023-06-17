@@ -43,3 +43,7 @@
 
 ## 6.15.목
 - [x] Car CS (AUTOSAR, ASPICE, ISO 26262 등) md 정리
+
+## 6.16.금
+- [x] CSTS 13~16장 끝 + 예상문제
+
