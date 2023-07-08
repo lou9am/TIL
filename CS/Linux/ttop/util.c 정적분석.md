@@ -46,7 +46,8 @@
     - `tty, priority, nice, state` 획득해 상태를 확인
 
     4. Start 획득 부분
-    ```unsigned long start = time(NULL) - uptime + (startTime/hertz);
+    ```
+    unsigned long start = time(NULL) - uptime + (startTime/hertz);
 	struct tm *tmStart= localtime(&start);
 	if(time(NULL) - start < 24 * 60 * 60){
 		strftime(proc.start, TIME_LEN, "%H:%M", tmStart);
@@ -57,10 +58,13 @@
 	else{
 		strftime(proc.start, TIME_LEN, "%y", tmStart);
 	}
-```
+	```
+
 
     5. TIME 획득 부분
-    ```unsigned long cpuTime = totalTime / hertz;
+    
+    ```
+	unsigned long cpuTime = totalTime / hertz;
 	struct tm *tmCpuTime= localtime(&cpuTime);
 	if(!isPPS || (!aOption && !uOption && !xOption))	//ttop이거나 pps에서 옵션이 없을 경우
 		sprintf(proc.time, "%02d:%02d:%02d", tmCpuTime->tm_hour, tmCpuTime->tm_min, tmCpuTime->tm_sec);
@@ -69,7 +73,7 @@
 
 	sscanf(statToken[STAT_CMD_IDX], "(%s", proc.cmd);	//cmd 획득
 	proc.cmd[strlen(proc.cmd)-1] = '\0';	//마지막 ')' 제거
-```
+	```
 
 ### search_proc
 - `/proc` 디렉토리 탐색하는 함수
