@@ -113,6 +113,9 @@ typedef struct{
 #define CPU_STAT_ST_IDX 8
 ```
 
+- proc/stat만 보고 cpu 사용량 계산하는 법
+출처 : https://blog.yatopark.net/2015/12/02/cpu-사용률-계산하기/  
+
 ### 4. /proc/meminfo
 - 1-5행, 15-16행, 24행
 - 메모리 계산에 필요
