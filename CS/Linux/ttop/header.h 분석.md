@@ -115,7 +115,8 @@ typedef struct{
 
 - proc/stat만 보고 cpu 사용량 계산하는 법
 출처 : https://blog.yatopark.net/2015/12/02/cpu-사용률-계산하기/
-출처 : https://moneydeveloper.tistory.com/52  
+출처 : https://moneydeveloper.tistory.com/52
+출처 : https://powergi.tistory.com/entry/CPU사용률-구하는-공식
 
 ### 4. /proc/meminfo
 - 1-5행, 15-16행, 24행
