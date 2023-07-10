@@ -142,6 +142,17 @@
 - tick 읽어서 tickCnt = uptime * hertz 로 부팅 후 현재까지 일어난 문맥 교환 횟수 계산.
 - 현재 틱수 - 이전 값 해서 퍼센트로 변환해 저장
 
+- 프로세스가 명령어를 연산한 시간 : `totalTime = uTime + sTime` (/proc/PID/stat의 14, 15번째 값)
+- 프로세스가 생성되어 있던 시간(duration) : `processUpTime = upTime - (startTime / Hertz)`
+- startTime은 프로세스가 시작한 시간으로, /proc/PID/stat의 22번째 값이다.
+- 여기서 hertz는 linux kernel clock frequency로 Arm의 경우 보통 100이다.
+- 프로생성 이후 평균 `CPU Usage = 100 * ((totalTime / hertz) / processUpTime)`
+
+- 특정 시간 단위 CPU usage는 totalTime과 upTime의 시간차이로 계산.
+- upTimeDiff = curret_upTime - previous_upTime
+- totalTimeDiff = current_totalTime - previous_totalTime
+- `cpuUsage = 100 * ((totalTimeDiff / Hetrz) / upTimeDiff)`
+
 5. %Mem 부분
 -  meminfo 정보 읽어와서 아래와 같이 계산
 
