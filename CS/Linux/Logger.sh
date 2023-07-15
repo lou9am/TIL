@@ -7,14 +7,11 @@ log_directory="/run"
 log_files=("log1" "log2" "log3" "log4" "log5")
 
 # 로그 파일들을 하나로 병합하여 저장할 디렉토리 및 파일명
-output_directory="/run"
+target_directory="/home/pi/log"
 merged_log_file="log_all.log"
 
 # 최대 파일 크기 (1MB)
 max_file_size=1000000
-
-# 대상 디렉토리
-target_directory="/home/pi/log"
 
 # 파일 크기가 1MB 이상인지 확인
 function is_file_size_over_limit() {
