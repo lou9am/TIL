@@ -32,12 +32,13 @@ while true; do
       echo "기존의 log_all.log 파일을 log_all_old.log로 변경하였습니다."
     fi
 
-    # log_all.log 파일을 대상 디렉토리로 복사
-    cp "$merged_log_file" "$target_directory/$merged_log_file"
+    # log_all.log 파일을 타겟 디렉토리로 이동
+    mv "$merged_log_file" "$target_directory/$merged_log_file"
     echo "log_all.log 파일이 $target_directory 디렉토리에 저장되었습니다."
 
     # 로그 파일 초기화
-    > "$merged_log_file"
+    # > "$merged_log_file"
+    cat /dev/null > "$merged_log_file"
 
     # log1, log2, log3, log4, log5 파일 삭제
     rm "${log_directory}/${log_files[@]}"
