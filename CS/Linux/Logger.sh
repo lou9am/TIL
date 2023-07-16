@@ -1,49 +1,50 @@
 #!/bin/bash
 
-# 로그 파일을 병합할 디렉토리
 log_directory="/run"
+#log_files=("log1" "log2" "log3" "log4" "log5")
+log_files=$(find "$log_directory" -maxdepth 1 -type f -regex ".*/log[0-9]+")
 
-# 병합할 로그 파일들
-log_files=("log1" "log2" "log3" "log4" "log5")
-
-# 로그 파일들을 하나로 병합하여 저장할 디렉토리 및 파일명
-target_directory="/home/pi/log"
 merged_log_file="log_all.log"
 
-# 최대 파일 크기 (1MB)
 max_file_size=1000000
 
-# 파일 크기가 1MB 이상인지 확인
-function is_file_size_over_limit() {
-  local file="$1"
-  [ "$(stat -c%s "$file")" -ge "$max_file_size" ]
-}
+target_directory="/home/guest/log"
 
-# 로그 파일 실시간 병합 및 크기 확인
+
 while true; do
-  # 로그 파일들을 하나로 병합
-  # cat "${log_directory}/${log_files[@]}" >> "$merged_log_file"
-  cat /run/log1 /run/log2 /run/log3 /run/log4 /run/log5 >> /run/log_all.log
-  
-  # 파일 크기가 1MB 이상인지 확인
-  if is_file_size_over_limit "$merged_log_file"; then
-    # 대상 디렉토리에 log_all.log 파일이 있는 경우 기존 파일을 log_all_old.log로 변경
+  # log1~log5 파일이 존재하면 병합
+  for file in "${log_directory}"/log{1..5}; do
+          if [ -f "$file" ]; then
+                  cat "$file" >> "$log_directory/$merged_log_file"
+          fi
+  done
+
+  # 병합 파일의 크기 확인
+  file_size=$(wc -c < "/run/log_all.log")
+
+  # 파일 크기가 1MB 이상이면
+  if [ "$file_size" -ge "$max_file_size" ]; then
+
+    # -f : 파일이 존재하고 일반 파일이면 True
     if [ -f "$target_directory/$merged_log_file" ]; then
+      # 같은 이름 파일이 이미 존재하면
       mv "$target_directory/$merged_log_file" "$target_directory/log_all_old.log"
-      echo "기존의 log_all.log 파일을 log_all_old.log로 변경하였습니다."
+      echo "기존 파일을 old로 변경"
     fi
 
-    # log_all.log 파일을 타겟 디렉토리로 이동
-    mv "$merged_log_file" "$target_directory/$merged_log_file"
-    echo "log_all.log 파일이 $target_directory 디렉토리에 저장되었습니다."
+    # run에서home/pi/log로 이동
+    cp /run/log_all.log /home/guest/log/log_all.log
+    # cp "$merged_log_file" "$target_directory/$merged_log_file"
+    echo "log_all.log 파일이 $target_directory 디렉토리에 저장"
 
-    # 로그 파일 초기화
-    # > "$merged_log_file"
-    cat /dev/null > "$merged_log_file"
+    # 기존 파일은 삭제
+    cat /dev/null > /run/log_all.log
 
-    # log1, log2, log3, log4, log5 파일 삭제
-    rm "${log_directory}/${log_files[@]}"
-    echo "log1, log2, log3, log4, log5 파일이 삭제되었습니다."
+    # log1 ~ log5도 삭제
+    rm /run/log1 /run/log2 /run/log3 /run/log4 /run/log5
+    echo "log1, log2, log3, log4, log5 파일 삭제"
+
+  # 파일 크기가 1MB보다 작으면
   else
     sleep 1
   fi
