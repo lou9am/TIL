@@ -22,8 +22,9 @@ function is_file_size_over_limit() {
 # 로그 파일 실시간 병합 및 크기 확인
 while true; do
   # 로그 파일들을 하나로 병합
-  cat "${log_directory}/${log_files[@]}" >> "$merged_log_file"
-
+  # cat "${log_directory}/${log_files[@]}" >> "$merged_log_file"
+  cat /run/log1 /run/log2 /run/log3 /run/log4 /run/log5 >> /run/log_all.log
+  
   # 파일 크기가 1MB 이상인지 확인
   if is_file_size_over_limit "$merged_log_file"; then
     # 대상 디렉토리에 log_all.log 파일이 있는 경우 기존 파일을 log_all_old.log로 변경
