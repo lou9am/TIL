@@ -1,10 +1,7 @@
-guest@node3:~$ vim Watcher
-
 #!/bin/bash
 
 thread_ids=()
 logger_pid=""
-
 
 # intern.c 실행
 ./intern &
